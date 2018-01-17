@@ -30,6 +30,7 @@
 @endsection
 
 @section('categoriaszone')
+<h2>Categorias</h2>
 @for($i= 0; $i < 6; $i++)
   @component('components.menu')
     @slot('categoria')

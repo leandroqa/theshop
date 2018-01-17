@@ -31,6 +31,40 @@
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="#carrinho">{{Html::image('img/cart.png')}} (10)</a></li>
+
+          @if (Auth::guest())
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <!--<li><a href="{{ route('register') }}">Register</a></li>-->
+          @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->email }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <a href="#">Histórico de pedidos</a>
+                        </li>
+                        <li>
+                          <a href="#">Endereço de entrega</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
+
+
         </ul>
       </div>
     </div>
@@ -42,15 +76,16 @@
         <p class="pull-right visible-xs">
           <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Categorias</button>
         </p>
+
         @yield('header1')
         <div class="row">
+          @yield('content')
           @yield('search')
           @yield('produtoszone')
         </div>
       </div>
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
         <div class="list-group">
-          <h2>Categorias</h2>
           @yield('categoriaszone')
         </div>
       </div>
