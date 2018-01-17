@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/','produtosController@index');
+Route::get('/categoria/{cat}','produtosController@showCategoria');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
