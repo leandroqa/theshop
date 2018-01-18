@@ -31,7 +31,7 @@
     @slot('url')
       /{{$categoria->slug}}
     @endslot
-    @if($cat == $categoria->slug)
+    @if(strtolower($cat) == $categoria->slug)
       @slot('active')
         active
       @endslot
