@@ -17,16 +17,19 @@
 @endsection
 
 @section('produtoszone')
-  @for($i= 0; $i < 12; $i++)
+  @foreach($produtos as $produto)
     @component('components.produtoszone')
         @slot('nomeProduto')
-          MacbookPro
+          {{$produto->nome}}
         @endslot
         @slot('descricaoProduto')
-          A touch of genius
+          {{$produto->caracteristicas}}
+        @endslot
+        @slot('imagem')
+          {{$produto->fotoDestacada}}
         @endslot
     @endcomponent
-  @endfor
+  @endforeach
 @endsection
 
 @section('categoriaszone')
