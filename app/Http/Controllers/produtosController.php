@@ -15,5 +15,11 @@ class produtosController extends Controller
       return view('index')->with(['categorias'=> $categorias, 'produtos'=> $produtos]);
     }
 
+    public function produtoInfo($produto_id)
+    {
+      $produto = Produto::where('id','=',$produto_id)->first();
+      return view('produtoInfo')->with(['produto'=> $produto,'categorias'=> categoriasController::getCategorias()]);
+    }
+
 
 }

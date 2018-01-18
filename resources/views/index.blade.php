@@ -28,6 +28,9 @@
         @slot('imagem')
           {{$produto->fotoDestacada}}
         @endslot
+        @slot('produto_id')
+          {{$produto->id}}
+        @endslot
     @endcomponent
   @endforeach
 @endsection

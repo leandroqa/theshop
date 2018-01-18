@@ -29,8 +29,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="#carrinho">{{Html::image('img/cart.png')}} (10)</a></li>
+          <li><a href="/carrinho">{{Html::image('img/cart.png')}} (10)</a></li>
 
           @if (Auth::guest())
                 <li><a href="{{ route('login') }}">Login</a></li>
