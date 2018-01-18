@@ -16,8 +16,10 @@
 });*/
 
 Route::get('/','produtosController@index');
-Route::get('/{cat}','categoriasController@showCategoria');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/{cat}','categoriasController@showCategoria');
