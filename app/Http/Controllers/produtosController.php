@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace theshop\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +9,9 @@ class produtosController extends Controller
     //
     public function index()
     {
-      return view('index');
+      $categorias = categoriasController::getCategorias();
+      return view('index')->with(['categorias'=> $categorias]);
     }
 
-    public function showCategoria($categoria)
-    {
-      return view('index');
-    }
+
 }

@@ -4,10 +4,10 @@ namespace theshop;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Produto extends Model
 {
     //
     protected $fillable = [
-        'nome','sobrenome','email', 'cpf','aniversario','sexo',
+        'nome','caracteristicas','qtde', 'preco',
     ];
 }

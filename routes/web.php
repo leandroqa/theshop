@@ -16,7 +16,7 @@
 });*/
 
 Route::get('/','produtosController@index');
-Route::get('/categoria/{cat}','produtosController@showCategoria');
+Route::get('/{cat}','categoriasController@showCategoria');
 
 Auth::routes();
 

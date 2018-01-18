@@ -1,16 +1,7 @@
 @extends('layouts.app')
-
 @section('header1')
-@component('components.header1')
-      @slot('titulo')
-        Novo produto aqui
-      @endslot
-      @slot('texto')
-        <p>Mussum Ipsum, cacilds vidis litro abertis.</p>
-      @endslot
-@endcomponent
+  <h1>{{$cat}}</h1>
 @endsection
-
 @section('search')
   @component('components.search')
   @endcomponent
@@ -40,8 +31,14 @@
     @slot('url')
       /{{$categoria->slug}}
     @endslot
-    @slot('active')
-    @endslot
+    @if($cat == $categoria->slug)
+      @slot('active')
+        active
+      @endslot
+    @else
+      @slot('active')
+      @endslot
+    @endif
   @endcomponent
 @endforeach
 @endsection

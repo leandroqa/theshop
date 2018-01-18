@@ -16,6 +16,7 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
           $table->increments('id');
           $table->string('nome',255);
+          $table->string('slug',255)->unique();
           $table->string('foto',255)->nullable()->default('nopic.jpg');
           $table->text('descricao')->nullable();
           $table->char('status', 1)->default(1);
