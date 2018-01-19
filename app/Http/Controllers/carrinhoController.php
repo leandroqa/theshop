@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class carrinhoController extends Controller
 {
-    protected $carrinho = array();
+    //protected $carrinho = array();
 
     public function __construct()
     {
       //inicializa a seção do carrinho de compras
-      $this->carrinho = ['id'=>1, 'codigo_produto'=> 1, 'qtde' => 2];
+      //$this->carrinho = ['id'=>1, 'codigo_produto'=> 1, 'qtde' => 2];
+      //$request->session()->put('carrinho', null);
+    //session(['carrinho' => null]);
+    session('carrinho', array());
+
     }
 
     public function showCarrinho()
@@ -22,12 +26,18 @@ class carrinhoController extends Controller
     public function getCarrinho()
     {
       //retorna os produtos do carrinho de compras
-      return $this->carrinho;
+      return session('carrinho');
     }
 
-    public function adicionarCarrinho($compra)
+    public function adicionarCarrinho(Request $request)
     {
         //adicionar itens no carrinho de compras
+
+        $compra = $request->all();
+
+        //$request->session()->put('carrinho', $compra);
+        $request->session()->push('carrinho', $compra);
+        return redirect()->route('showCarrinho');
     }
 
     public function removerCarrinho($id)
@@ -37,9 +47,10 @@ class carrinhoController extends Controller
 
 
 
-    public function finalizarCompra()
+    public function finalizarCompra(Request $request)
     {
       //cadastra a compra na tabela pedido
+      $request->session()->flush();
     }
 
 

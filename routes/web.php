@@ -26,6 +26,10 @@ Route::get('/produto/','produtosController@index');
 
 Route::get('/produto/{prod}','produtosController@produtoInfo');
 
-Route::get('/carrinho','carrinhoController@showCarrinho');
+Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adicionarCarrinho');
+
+Route::get('/carrinho','carrinhoController@showCarrinho')->name('showCarrinho');
 
 Route::get('/{cat}','categoriasController@showCategoria');
+
+Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adicionarCarrinho');

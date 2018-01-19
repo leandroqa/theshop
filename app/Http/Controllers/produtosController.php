@@ -21,5 +21,7 @@ class produtosController extends Controller
       return view('produtoInfo')->with(['produto'=> $produto,'categorias'=> categoriasController::getCategorias()]);
     }
 
+    
+
 
 }
