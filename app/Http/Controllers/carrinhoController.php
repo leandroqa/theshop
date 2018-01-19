@@ -40,9 +40,20 @@ class carrinhoController extends Controller
         return redirect()->route('showCarrinho');
     }
 
-    public function removerCarrinho($id)
+    public function removerCarrinho(Request $request)
     {
       //remover itens do carrinho de compras
+      $arr = $this->getCarrinho();
+      //$key = array_search($request->input('id'), $arr);
+      $key = array_search($request->input('id'), array_column($arr, 'id'));
+      unset($arr[$key]);
+      session('carrinho', $arr);
+
+      //return $arr;
+      //$request->session()->forget("carrinho");
+      return redirect()->route('showCarrinho');
+      //return $request->input('id');
+
     }
 
 

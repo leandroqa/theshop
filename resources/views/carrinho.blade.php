@@ -6,25 +6,30 @@
 
 <table class="table table-hover">
 <tr>
+  <th>ID</th>
   <th>Produto</th>
   <th>Quantidade</th>
   <th>Preço Unitário</th>
   <th>Subtotal</th>
   <th></th>
 </tr>
-<?php $i =0; ?>
+<?php $i =0;
+print_r($carrinho);
+ ?>
 @foreach($carrinho as $cart)
     <tr>
+        <td>{{$cart['id']}}</td>
         <td>{{$cart['nome']}}</td>
         <td>
           <input type="number" name="qtde-{{++$i}}" id="qtde-{{$i}}" value="1" min="1" max="{{$cart['qtde']}}" class="quantidade" onclick="calculaTotal(this)">
         </td>
         <td id="preco-{{$i}}">R$ {{$cart['preco']}}</td>
         <td id="subtotal-{{$i}}">R$ {{$cart['preco']}}</td>
-        <td><a href="#">remover</a></td>
+        {{Form::open(['route' => 'removerCarrinho', 'method' => 'DELETE'])}}
+        {{Form::hidden('id',$cart['id'])}}
+        <td>{{Form::submit('remover')}}</td>
+        {{Form::close()}}
     </tr>
-
-
 @endforeach
 </table>
 <h3>Total a pagar: R$ <span id="total"></span></h3>

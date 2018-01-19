@@ -33,3 +33,5 @@ Route::get('/carrinho','carrinhoController@showCarrinho')->name('showCarrinho');
 Route::get('/{cat}','categoriasController@showCategoria');
 
 Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adicionarCarrinho');
+
+Route::delete('/carrinho/remover','carrinhoController@removerCarrinho')->name('removerCarrinho');
