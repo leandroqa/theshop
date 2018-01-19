@@ -11,11 +11,7 @@ class carrinhoController extends Controller
     public function __construct()
     {
       //inicializa a seção do carrinho de compras
-      //$this->carrinho = ['id'=>1, 'codigo_produto'=> 1, 'qtde' => 2];
-      //$request->session()->put('carrinho', null);
-    //session(['carrinho' => null]);
-    session('carrinho', array());
-
+      session('carrinho', array());
     }
 
     public function showCarrinho()
@@ -32,10 +28,7 @@ class carrinhoController extends Controller
     public function adicionarCarrinho(Request $request)
     {
         //adicionar itens no carrinho de compras
-
         $compra = $request->all();
-
-        //$request->session()->put('carrinho', $compra);
         $request->session()->push('carrinho', $compra);
         return redirect()->route('showCarrinho');
     }
@@ -44,18 +37,17 @@ class carrinhoController extends Controller
     {
       //remover itens do carrinho de compras
       $arr = $this->getCarrinho();
-      //$key = array_search($request->input('id'), $arr);
       $key = array_search($request->input('id'), array_column($arr, 'id'));
       unset($arr[$key]);
-      session('carrinho', $arr);
-
-      //return $arr;
-      //$request->session()->forget("carrinho");
+      $request->session()->flush();
+      foreach($arr as $compra)
+      {
+        $request->session()->push('carrinho', $compra);
+      }
       return redirect()->route('showCarrinho');
-      //return $request->input('id');
+
 
     }
-
 
 
     public function finalizarCompra(Request $request)

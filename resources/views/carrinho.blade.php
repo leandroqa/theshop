@@ -4,19 +4,20 @@
 @endsection
 @section('content')
 
-<table class="table table-hover">
-<tr>
-  <th>ID</th>
-  <th>Produto</th>
-  <th>Quantidade</th>
-  <th>Preço Unitário</th>
-  <th>Subtotal</th>
-  <th></th>
-</tr>
-<?php $i =0;
-print_r($carrinho);
- ?>
-@foreach($carrinho as $cart)
+@if(count($carrinho) > 0)
+  <table class="table table-hover">
+    <tr>
+    <th>ID</th>
+    <th>Produto</th>
+    <th>Quantidade</th>
+    <th>Preço Unitário</th>
+    <th>Subtotal</th>
+    <th></th>
+  </tr>
+  <?php $i =0;
+  //print_r($carrinho);
+   ?>
+  @foreach($carrinho as $cart)
     <tr>
         <td>{{$cart['id']}}</td>
         <td>{{$cart['nome']}}</td>
@@ -30,9 +31,13 @@ print_r($carrinho);
         <td>{{Form::submit('remover')}}</td>
         {{Form::close()}}
     </tr>
-@endforeach
+  @endforeach
 </table>
 <h3>Total a pagar: R$ <span id="total"></span></h3>
+@else
+  <p align="center">Seu carrinho ainda está vazio!</p>
+@endif
+
 
 <p align="center"><a class="btn btn-default" href="/" role="button">Voltar para loja</a></p>
 @endsection
