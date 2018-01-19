@@ -33,12 +33,18 @@
     </tr>
   @endforeach
 </table>
-<h3>Total a pagar: R$ <span id="total"></span></h3>
+<h3>Total a pagar: R$ 200,00 <span id="total"></span></h3>
+  {{Form::open(['route' => 'finalizarCompra', 'method' => 'POST'])}}
+  {{Form::hidden('valorTotal',0)}}
+  {{Form::submit('Ir para Pagamento',['class'=> 'btn btn-success'])}}
+  {{Form::close()}}
+
+
 @else
   <p align="center">Seu carrinho ainda está vazio!</p>
 @endif
 
-
+<br>
 <p align="center"><a class="btn btn-default" href="/" role="button">Voltar para loja</a></p>
 @endsection
 
@@ -57,5 +63,8 @@
     var novovalor = valorUnitario * qtde.value;
     subtotal.innerHTML = "R$ "+ novovalor;
   }
+
+
+
 
 </script>

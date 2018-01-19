@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/carrinho';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|digits:10',
+            'cpf' => 'required|digits:11',
             'aniversario' => 'required|date',
             'password' => 'required|string|min:6|confirmed',
         ]);

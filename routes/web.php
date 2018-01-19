@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/sobre','produtosController@about')->name('about');
+
 Route::get('/produto/','produtosController@index');
 
 Route::get('/produto/{prod}','produtosController@produtoInfo');
@@ -35,3 +37,5 @@ Route::get('/{cat}','categoriasController@showCategoria');
 Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adicionarCarrinho');
 
 Route::delete('/carrinho/remover','carrinhoController@removerCarrinho')->name('removerCarrinho');
+
+Route::post('/carrinho/finalizar','carrinhoController@finalizarCompra')->name('finalizarCompra');

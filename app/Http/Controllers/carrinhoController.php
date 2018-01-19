@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 class carrinhoController extends Controller
 {
-    //protected $carrinho = array();
-
     public function __construct()
     {
       //inicializa a seção do carrinho de compras
@@ -45,16 +43,16 @@ class carrinhoController extends Controller
         $request->session()->push('carrinho', $compra);
       }
       return redirect()->route('showCarrinho');
-
-
     }
 
 
     public function finalizarCompra(Request $request)
     {
       //cadastra a compra na tabela pedido
-      $request->session()->flush();
+      $total = $request->input('valorTotal');
+      return "Finalizar compra $total";
+      //$request->session()->flush();
+      //return redirect()->route('showCarrinho');
     }
-
 
 }

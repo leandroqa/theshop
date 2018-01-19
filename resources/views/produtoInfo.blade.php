@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>{{$produto->nome}}</h1>
-<div class="col-xs-8">
+<div class="col-xs-7">
 <div class="thumbnail">
   <img src="/uploads/{{$produto->fotoDestacada}}" alt="">
 </div>
