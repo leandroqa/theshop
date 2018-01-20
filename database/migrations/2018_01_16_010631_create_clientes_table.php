@@ -17,7 +17,7 @@ class CreateClientesTable extends Migration
           $table->increments('id');
           $table->string('nome',255);
           $table->string('sobrenome',255);
-          $table->string('email',255);
+          $table->string('email',255)->unique();
           $table->string('cpf',11);
           $table->dateTime('aniversario');
           $table->char('sexo',1);

@@ -15,7 +15,18 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email',255);
+            $table->foreign('email')
+                          ->references('email')
+                          ->on('clientes')
+                          ->onDelete('cascade');
+            $table->integer('cobrancas_id')->unsigned();
+            $table->foreign('cobrancas_id')
+                          ->references('id')
+                          ->on('cobrancas')
+                          ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

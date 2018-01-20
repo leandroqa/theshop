@@ -41,7 +41,7 @@
 
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                          <a href="#">Histórico de pedidos</a>
+                          <a href="/pedidos">Histórico de pedidos</a>
                         </li>
                         <li>
                           <a href="#">Endereço de entrega</a>

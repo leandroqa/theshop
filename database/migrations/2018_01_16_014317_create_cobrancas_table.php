@@ -15,16 +15,21 @@ class CreateCobrancasTable extends Migration
     {
         Schema::create('cobrancas', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('clientes_id')->unsigned();
-          $table->foreign('clientes_id')
-                        ->references('id')
+          $table->string('email',255);
+          $table->foreign('email')
+                        ->references('email')
                         ->on('clientes')
                         ->onDelete('cascade');
-          $table->integer('cobrancas_id')->unsigned();
-          $table->foreign('cobrancas_id')
-                        ->references('id')
-                        ->on('cobrancas')
-                        ->onDelete('cascade');
+          $table->string('telefone',255);
+          $table->string('celular',255)->nullable();
+          $table->string('cep',8);
+          $table->string('numero',10);
+          $table->text('endereco');
+          $table->text('complemento')->nullable();
+          $table->text('referencia')->nullable();
+          $table->string('bairro',255);
+          $table->string('cidade',255);
+          $table->string('estado',2);
           $table->timestamps();
           $table->softDeletes();
         });

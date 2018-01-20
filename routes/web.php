@@ -32,7 +32,7 @@ Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adici
 
 Route::get('/carrinho','carrinhoController@showCarrinho')->name('showCarrinho');
 
-Route::get('/{cat}','categoriasController@showCategoria');
+
 
 Route::post('/carrinho/add','carrinhoController@adicionarCarrinho')->name('adicionarCarrinho');
 
@@ -42,8 +42,12 @@ Route::post('/carrinho/finalizar','carrinhoController@finalizarCompra')->name('f
 
 Route::get('/carrinho/atualizar','carrinhoController@atualizarCarrinho')->name('atualizarCarrinho');
 
-
-
-Route::get('/carrinho/bye','carrinhoController@finalizarCompra');
-
 Route::post('/buscar','produtosController@buscarProdutos')->name('buscarProdutos');
+
+Route::get('/pedidos/','pedidosController@index')->middleware('auth');
+
+//Dev - apagar esta rota #############
+Route::get('/carrinho/bye','carrinhoController@finalizarCompra');
+//###################################
+
+Route::get('/{cat}','categoriasController@showCategoria');
