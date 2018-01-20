@@ -45,7 +45,6 @@ class carrinhoController extends Controller
       return redirect()->route('showCarrinho');
     }
 
-
     public function finalizarCompra(Request $request)
     {
       //cadastra a compra na tabela pedido
@@ -54,5 +53,28 @@ class carrinhoController extends Controller
       //$request->session()->flush();
       //return redirect()->route('showCarrinho');
     }
+
+    public function atualizarCarrinho(Request $request)
+    {
+      //Atualiza qtde de itens do carrinho de compras
+      $key = $request->input('id');
+      $qtde = $request->input('qtde');
+      if($key != null)
+      {
+        $arr = $this->getCarrinho();
+        $arr[$key]['qtde'] = $qtde;
+        $request->session()->flush();
+        foreach($arr as $compra)
+        {
+          $request->session()->push('carrinho', $compra);
+        }
+        return 1;
+      }
+      else
+      {
+        return redirect()->route('showCarrinho');
+      }
+    }
+
 
 }

@@ -5,6 +5,7 @@
 @section('content')
 
 @if(count($carrinho) > 0)
+<div class="table-responsive">
   <table class="table table-hover">
     <tr>
     <th>ID</th>
@@ -17,12 +18,14 @@
   <?php $i =0;
   //print_r($carrinho);
    ?>
-  @foreach($carrinho as $cart)
+
+  @foreach ($carrinho as $key => $cart)
     <tr>
         <td>{{$cart['id']}}</td>
         <td>{{$cart['nome']}}</td>
         <td>
-          <input type="number" name="qtde-{{++$i}}" id="qtde-{{$i}}" value="1" min="1" max="{{$cart['qtde']}}" class="quantidade" onclick="calculaTotal(this)">
+          <input type="number" name="qtde-{{++$i}}" id="qtde-{{$i}}" value="{{$cart['qtde']}}" min="1" max="{{$cart['estoque']}}" class="quantidade" onclick="calculaTotal(this)">
+          <input type="hidden" name="key-{{$i}}" id="key-{{$i}}" value="{{$key}}">
         </td>
         <td id="preco-{{$i}}">R$ {{$cart['preco']}}</td>
         <td id="subtotal-{{$i}}">R$ {{$cart['preco']}}</td>
@@ -33,6 +36,7 @@
     </tr>
   @endforeach
 </table>
+</div>
 <h3>Total a pagar: R$ 200,00 <span id="total"></span></h3>
   {{Form::open(['route' => 'finalizarCompra', 'method' => 'POST'])}}
   {{Form::hidden('valorTotal',0)}}
@@ -55,15 +59,33 @@
   {
     var id = qtde.id;
     var idx = id.split("-");
-    var nome = "preco-"+ idx[1];
-    var nome2 = "subtotal-"+ idx[1];
+    idx = idx[1];
+    var nome = "preco-"+ idx;
+    var nome2 = "subtotal-"+ idx;
     var valor = document.getElementById(nome).innerHTML;
     var valorUnitario = valor.replace("R$ ","");
     var subtotal = document.getElementById(nome2);
     var novovalor = valorUnitario * qtde.value;
     subtotal.innerHTML = "R$ "+ novovalor;
+    atualizarCarrinho(qtde,idx);
   }
 
+
+  function atualizarCarrinho(qtde,idx)
+  {
+      var key = document.getElementById("key-"+idx).value;
+      var qx = qtde.value;
+      $.ajax({
+           url:"/carrinho/atualizar",
+           type:'GET',
+           data:{id:key,qtde:qx},
+           success:function(data){
+           },
+           error: function (data) {
+               alert('Error'+ data);
+           }
+       });
+  }
 
 
 

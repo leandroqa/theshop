@@ -15,8 +15,10 @@
 {{Form::hidden('id',$produto->id)}}
 {{Form::hidden('nome',$produto->nome)}}
 {{Form::hidden('caracteristicas',$produto->caracteristicas)}}
-{{Form::hidden('qtde',$produto->qtde)}}
+{{Form::hidden('qtde',1)}}
+{{Form::hidden('estoque',$produto->qtde)}}
 {{Form::hidden('preco',$produto->preco)}}
+
 <p>{{Form::submit('Adicionar ao carrinho')}}</p>
 {{Form::close()}}
 </div>
