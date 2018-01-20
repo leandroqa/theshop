@@ -24,8 +24,9 @@ class produtosController extends Controller
     public function buscarProdutos(Request $request)
     {
       //busca de produtos
-      //Select tabela produto com like
-      echo "Achei: ". $request->input('buscarpor');
+      $prod = $request->input('buscarpor');
+      $produtos = Produto::where("nome","like","%$prod%")->get();
+      return view('index')->with(['produtos'=> $produtos, 'categorias' => categoriasController::getCategorias()]);
     }
 
 
