@@ -28,7 +28,7 @@
           <input type="hidden" name="key-{{$i}}" id="key-{{$i}}" value="{{$key}}">
         </td>
         <td id="preco-{{$i}}">R$ {{$cart['preco']}}</td>
-        <td id="subtotal-{{$i}}">R$ {{$cart['preco']}}</td>
+        <td id="subtotal-{{$i}}">{{$cart['totalUnitario']}}</td>
         {{Form::open(['route' => 'removerCarrinho', 'method' => 'DELETE'])}}
         {{Form::hidden('id',$cart['id'])}}
         <td>{{Form::submit('remover')}}</td>
@@ -75,10 +75,11 @@
   {
       var key = document.getElementById("key-"+idx).value;
       var qx = qtde.value;
+      var totalx = document.getElementById("subtotal-"+idx).innerHTML;
       $.ajax({
            url:"/carrinho/atualizar",
            type:'GET',
-           data:{id:key,qtde:qx},
+           data:{id:key,qtde:qx,totalUnitario:totalx},
            success:function(data){
            },
            error: function (data) {

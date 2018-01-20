@@ -41,3 +41,7 @@ Route::delete('/carrinho/remover','carrinhoController@removerCarrinho')->name('r
 Route::post('/carrinho/finalizar','carrinhoController@finalizarCompra')->name('finalizarCompra');
 
 Route::get('/carrinho/atualizar','carrinhoController@atualizarCarrinho')->name('atualizarCarrinho');
+
+
+
+Route::get('/carrinho/bye','carrinhoController@finalizarCompra');
