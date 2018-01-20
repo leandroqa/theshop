@@ -18,7 +18,7 @@ class CreateCobrancasTable extends Migration
           $table->string('email',255);
           $table->foreign('email')
                         ->references('email')
-                        ->on('clientes')
+                        ->on('users')
                         ->onDelete('cascade');
           $table->string('telefone',255);
           $table->string('celular',255)->nullable();

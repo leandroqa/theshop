@@ -12,20 +12,18 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nome</label>
+                            <label for="nome" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nome'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('nome') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
-                        <!-- Leandro -->
 
                         <div class="form-group{{ $errors->has('sobrenome') ? ' has-error' : '' }}">
                             <label for="sobrenome" class="col-md-4 control-label">Sobrenome</label>
@@ -41,9 +39,6 @@
                             </div>
                         </div>
 
-
-                        <!-- fim Leandro -->
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
@@ -57,8 +52,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <!-- Leandro -->
 
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
@@ -88,11 +81,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('aniversario') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('sexo') ? ' has-error' : '' }}">
                             <label for="sexo" class="col-md-4 control-label">Sexo</label>
 
                             <div class="col-md-6">
-                                <!--<input id="sexo" type="date" class="form-control" name="sexo" value="{{ old('aniversario') }}" required autofocus>-->
                                 <select id="sexo" name="sexo" required autofocus>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -105,9 +97,6 @@
                                 @endif
                             </div>
                         </div>
-
-
-                        <!-- Fim Leandro -->
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Senha</label>

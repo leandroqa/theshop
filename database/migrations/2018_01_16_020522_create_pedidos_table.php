@@ -18,7 +18,7 @@ class CreatePedidosTable extends Migration
             $table->string('email',255);
             $table->foreign('email')
                           ->references('email')
-                          ->on('clientes')
+                          ->on('users')
                           ->onDelete('cascade');
             $table->integer('cobrancas_id')->unsigned();
             $table->foreign('cobrancas_id')
