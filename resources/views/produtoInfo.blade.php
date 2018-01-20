@@ -10,7 +10,6 @@
 <p>Descrição: <br>{{$produto->caracteristicas}}</p>
 <p>Quantidade: {{$produto->qtde}}</p>
 <p><b>R$ {{$produto->preco}}</b></p>
-<!--<p><a class="btn btn-default" href="#" role="button">Adicionar ao carrinho</a></p>-->
 {{Form::open(['route' => 'adicionarCarrinho', 'method' => 'POST'])}}
 {{Form::hidden('id',$produto->id)}}
 {{Form::hidden('nome',$produto->nome)}}

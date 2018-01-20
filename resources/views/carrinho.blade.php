@@ -6,7 +6,7 @@
 
 @if(count($carrinho) > 0)
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover carrinho">
     <tr>
     <th>ID</th>
     <th>Produto</th>
@@ -68,6 +68,7 @@
     var novovalor = valorUnitario * qtde.value;
     subtotal.innerHTML = novovalor;
     atualizarCarrinho(qtde,idx);
+    reloadCarrinho();
   }
 
 
@@ -87,6 +88,11 @@
                alert('Error'+ data);
            }
        });
+  }
+
+  function reloadCarrinho()
+  {
+      location.reload();
   }
 
 

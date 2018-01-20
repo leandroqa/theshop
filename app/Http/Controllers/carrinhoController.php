@@ -49,16 +49,16 @@ class carrinhoController extends Controller
     {
       //cadastra a compra na tabela pedido
       //$total = $request->input('valorTotal');
-      //return "Finalizar compra $total";
-      $request->session()->forget('carrinho');
+      return "Finalizar compra";
+      /*$request->session()->forget('carrinho');
       $request->session()->flush();
-      return "finished";
+      return "finished";*/
       //return redirect()->route('showCarrinho');
     }
 
     public function atualizarCarrinho(Request $request)
     {
-      //Atualiza qtde de itens do carrinho de compras
+      //Atualiza qtde de itens e total unitário
       $key = $request->input('id');
       $qtde = $request->input('qtde');
       $subtotal = $request->input('totalUnitario');
