@@ -62,7 +62,7 @@ class carrinhoController extends Controller
       $key = $request->input('id');
       $qtde = $request->input('qtde');
       $subtotal = $request->input('totalUnitario');
-      
+      $valorTotal = 0;
       if($key != null)
       {
         $arr = $this->getCarrinho();
@@ -72,8 +72,9 @@ class carrinhoController extends Controller
         foreach($arr as $compra)
         {
           $request->session()->push('carrinho', $compra);
+          $valorTotal += $compra['totalUnitario'];
         }
-        return 1;
+        return $valorTotal;
       }
       else
       {

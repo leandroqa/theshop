@@ -11,11 +11,11 @@
     <th>ID</th>
     <th>Produto</th>
     <th>Quantidade</th>
-    <th>Preço Unitário</th>
-    <th>Subtotal</th>
+    <th>Preço Unitário (R$)</th>
+    <th>Subtotal (R$)</th>
     <th></th>
   </tr>
-  <?php $i =0;
+  <?php $i =0; $total = 0;
   //print_r($carrinho);
    ?>
 
@@ -27,17 +27,18 @@
           <input type="number" name="qtde-{{++$i}}" id="qtde-{{$i}}" value="{{$cart['qtde']}}" min="1" max="{{$cart['estoque']}}" class="quantidade" onclick="calculaTotal(this)">
           <input type="hidden" name="key-{{$i}}" id="key-{{$i}}" value="{{$key}}">
         </td>
-        <td id="preco-{{$i}}">R$ {{$cart['preco']}}</td>
+        <td id="preco-{{$i}}">{{$cart['preco']}}</td>
         <td id="subtotal-{{$i}}">{{$cart['totalUnitario']}}</td>
         {{Form::open(['route' => 'removerCarrinho', 'method' => 'DELETE'])}}
         {{Form::hidden('id',$cart['id'])}}
         <td>{{Form::submit('remover')}}</td>
         {{Form::close()}}
     </tr>
+    <?php $total += $cart['totalUnitario'];?>
   @endforeach
 </table>
 </div>
-<h3>Total a pagar: R$ 200,00 <span id="total"></span></h3>
+<h3>Total a pagar: R$ <span id="total">{{$total}}</span></h3>
   {{Form::open(['route' => 'finalizarCompra', 'method' => 'POST'])}}
   {{Form::hidden('valorTotal',0)}}
   {{Form::submit('Ir para Pagamento',['class'=> 'btn btn-success'])}}
@@ -62,11 +63,10 @@
     idx = idx[1];
     var nome = "preco-"+ idx;
     var nome2 = "subtotal-"+ idx;
-    var valor = document.getElementById(nome).innerHTML;
-    var valorUnitario = valor.replace("R$ ","");
+    var valorUnitario = document.getElementById(nome).innerHTML;
     var subtotal = document.getElementById(nome2);
     var novovalor = valorUnitario * qtde.value;
-    subtotal.innerHTML = "R$ "+ novovalor;
+    subtotal.innerHTML = novovalor;
     atualizarCarrinho(qtde,idx);
   }
 
@@ -81,6 +81,7 @@
            type:'GET',
            data:{id:key,qtde:qx,totalUnitario:totalx},
            success:function(data){
+             document.getElementById('total').innerHTML = data;
            },
            error: function (data) {
                alert('Error'+ data);

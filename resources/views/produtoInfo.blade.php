@@ -18,7 +18,7 @@
 {{Form::hidden('qtde',1)}}
 {{Form::hidden('estoque',$produto->qtde)}}
 {{Form::hidden('preco',$produto->preco)}}
-{{Form::hidden('totalUnitario','R$ '. $produto->preco)}}
+{{Form::hidden('totalUnitario',$produto->preco)}}
 
 <p>{{Form::submit('Adicionar ao carrinho')}}</p>
 {{Form::close()}}
