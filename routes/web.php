@@ -45,3 +45,5 @@ Route::get('/carrinho/atualizar','carrinhoController@atualizarCarrinho')->name('
 
 
 Route::get('/carrinho/bye','carrinhoController@finalizarCompra');
+
+Route::post('/buscar','produtosController@buscarProdutos')->name('buscarProdutos');

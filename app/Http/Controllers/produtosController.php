@@ -21,6 +21,14 @@ class produtosController extends Controller
       return view('produtoInfo')->with(['produto'=> $produto,'categorias'=> categoriasController::getCategorias()]);
     }
 
+    public function buscarProdutos(Request $request)
+    {
+      //busca de produtos
+      //Select tabela produto com like
+      echo "Achei: ". $request->input('buscarpor');
+    }
+
+
     public function about()
     {
       return view('about');
