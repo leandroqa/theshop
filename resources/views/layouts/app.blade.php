@@ -44,7 +44,7 @@
                           <a href="/pedidos">Histórico de pedidos</a>
                         </li>
                         <li>
-                          <a href="#">Endereço de entrega</a>
+                          <a href="/cobranca">Endereço de entrega</a>
                         </li>
                         <li>
                             <a href="{{ route('logout') }}"

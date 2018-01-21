@@ -29,7 +29,7 @@ class CreateCobrancasTable extends Migration
           $table->text('referencia')->nullable();
           $table->string('bairro',255);
           $table->string('cidade',255);
-          $table->string('estado',2);
+          $table->string('estado',20);
           $table->timestamps();
           $table->softDeletes();
         });

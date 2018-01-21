@@ -49,7 +49,8 @@ class carrinhoController extends Controller
     {
       //cadastra a compra na tabela pedido
       //$total = $request->input('valorTotal');
-      return "Finalizar compra";
+      $carrinho = $this->getCarrinho();
+      return $carrinho;
       /*$request->session()->forget('carrinho');
       $request->session()->flush();
       return "finished";*/

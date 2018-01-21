@@ -39,7 +39,7 @@
 </table>
 </div>
 <h3>Total a pagar: R$ <span id="total">{{$total}}</span></h3>
-  {{Form::open(['route' => 'finalizarCompra', 'method' => 'POST'])}}
+  {{Form::open(['route' => 'finalizarCompra', 'method' => 'GET'])}}
   {{Form::hidden('valorTotal',0)}}
   {{Form::submit('Ir para Pagamento',['class'=> 'btn btn-success'])}}
   {{Form::close()}}
