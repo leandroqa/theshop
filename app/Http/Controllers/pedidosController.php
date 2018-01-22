@@ -65,6 +65,7 @@ class pedidosController extends Controller
             ->join('produtos', 'produtos.id', '=', 'produtosxpedidos.produtos_id')
             ->select('pedidos.id','pedidos.created_at','produtos.nome', 'produtos.caracteristicas','produtosxpedidos.qtde','produtosxpedidos.valorUnitario','pedidos.total','pedidos.email')
             ->where('pedidos.id', '=', $id_pedido)
+            ->where('pedidos.email', '=', Auth::user()->email)
             ->get();
       return view('pedidosInfo')->with(['pedidos'=> $pedidos, 'id' => $id_pedido]);
     }
