@@ -33,11 +33,11 @@ composer install
 
 cp .env.example .env
 
-*setar as credenciais do banco de dados em .env*
+**Setar as credenciais do banco de dados em .env**
 
 php artisan key:generate
 
-*Criar o banco de dados inicial rodando o comando:*
+**Criar o banco de dados inicial rodando o comando:**
 
 php artisan migrate
 
@@ -45,10 +45,19 @@ php artisan db:seed
 
 ## Executar o sistema
 
-*Rodar o sistema:*
+**Rodar o sistema:**
 
 php artisan serve
 
-*Acessar o endereço via browser:*
+**Acessar o endereço via browser:**
 
 http://localhost:8000
+
+
+## Banco de dados
+
+Estrutura do banco de dados gerada com o comando **php artisan migrate**:
+
+<p align="center">
+<img src="https://github.com/leandroqa/theshop/blob/master/docs/EstruturaBancoDados.png" alt="Banco de dados">
+</p>
