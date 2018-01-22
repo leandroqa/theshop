@@ -27,13 +27,14 @@ class pedidosController extends Controller
         $pedidos->email = Auth::user()->email;
         $pedidos->total = $request->input('valorTotal');
         $pedidos->save();
+        $pedidos_id = $pedidos->getKey();
         //Produtosxpedidos
         $carrinho = session('carrinho');
         foreach($carrinho as $cart)
         {
             $produto = new Produtosxpedido();
             $produto->produtos_id = $cart['id'];
-            $produto->email = Auth::user()->email;
+            $produto->pedidos_id = $pedidos_id;
             $produto->qtde = $cart['qtde'];
             $produto->valorUnitario = $cart['preco'];
             $produto->save();
@@ -51,7 +52,7 @@ class pedidosController extends Controller
 
     }
 
-    public function getPedidos($email)
+    public function getPedidos()
     {
       //lista de pedidos por usuário
     }
