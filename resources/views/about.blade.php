@@ -3,6 +3,6 @@
   <h1>Sobre</h1>
 @endsection
 @section('content')
-História de Leandro Roberto
+<a href="https://www.linkedin.com/in/leandroroberto/" target="new">Leandro Roberto Linkedin</a>
 
 @endsection
