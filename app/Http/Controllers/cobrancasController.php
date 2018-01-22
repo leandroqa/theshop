@@ -4,13 +4,15 @@ namespace theshop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use theshop\Cobranca;
+use Illuminate\Support\Facades\Auth;
 
 class cobrancasController extends Controller
 {
 
     public function index()
     {
-      return view('cobranca');
+      $cobranca = Cobranca::where('email',"=",Auth::user()->email)->first();
+      return view('cobranca')->withCobranca($cobranca);
     }
 
     public function gravar(Request $request)
@@ -25,7 +27,17 @@ class cobrancasController extends Controller
       'estado' => 'required',
       ]);
 
-      $cobranca = new Cobranca;
+      if (count(Cobranca::where('email',"=",Auth::user()->email)->get())> 0)
+      {
+        $idcobranca = Cobranca::where('email',"=",Auth::user()->email)->first();
+
+        $cobranca = Cobranca::find($idcobranca->id);
+      }
+      else
+      {
+          $cobranca = new Cobranca;
+      }
+
       $cobranca->email = $request->input('email');
       $cobranca->telefone = $request->input('telefone');
       $cobranca->celular = $request->input('celular');

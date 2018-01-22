@@ -20,53 +20,53 @@
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Telefone:<font color="red">*</font></span>
-  <input type="number" name="telefone" id="telefone" class="form-control" placeholder="" aria-describedby="sizing-addon2" required value="{{old('telefone')}}" >
+  <input type="number" name="telefone" id="telefone" class="form-control" placeholder="" aria-describedby="sizing-addon2" required value="{{isset($cobranca->telefone) ? $cobranca->telefone : old('telefone')}}" >
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Celular:</span>
-  <input type="number" name="celular" id="celular" class="form-control" placeholder="" aria-describedby="sizing-addon2" value="{{old('celular')}}">
+  <input type="number" name="celular" id="celular" class="form-control" placeholder="" aria-describedby="sizing-addon2" value="{{isset($cobranca->celular) ? $cobranca->celular : old('celular')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">CEP:<font color="red">*</font></span>
-  <input type="number" name="cep" id="cep" class="form-control" placeholder="" aria-describedby="sizing-addon2" required value="{{old('cep')}}">
-</div>
-<br>
-<div class="input-group">
-  <span class="input-group-addon" id="sizing-addon2">Número:<font color="red">*</font></span>
-  <input type="number" name="numero" id="numero" class="form-control" placeholder="Número" aria-describedby="sizing-addon2" required value="{{old('numero')}}">
+  <input type="number" name="cep" id="cep" class="form-control" placeholder="" aria-describedby="sizing-addon2" required value="{{isset($cobranca->cep) ? $cobranca->cep : old('cep')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Endereço:<font color="red">*</font></span>
-  <input type="text" name="endereco" id="endereco" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{old('endereco')}}">
+  <input type="text" name="endereco" id="endereco" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{isset($cobranca->endereco) ? $cobranca->endereco : old('endereco')}}">
+</div>
+<br>
+<div class="input-group">
+  <span class="input-group-addon" id="sizing-addon2">Número:<font color="red">*</font></span>
+  <input type="number" name="numero" id="numero" class="form-control" placeholder="Número" aria-describedby="sizing-addon2" required value="{{isset($cobranca->numero) ? $cobranca->numero : old('numero')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Complemento:</span>
-  <input type="text" name="complemento" id="complemento" class="form-control" placeholder="" aria-describedby="sizing-addon2"  value="{{old('complemento')}}">
+  <input type="text" name="complemento" id="complemento" class="form-control" placeholder="" aria-describedby="sizing-addon2"  value="{{isset($cobranca->complemento) ? $cobranca->complemento : old('complemento')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Referência:</span>
-  <input type="text" name="referencia" id="referencia" class="form-control" placeholder="" aria-describedby="sizing-addon2"  value="{{old('referencia')}}">
+  <input type="text" name="referencia" id="referencia" class="form-control" placeholder="" aria-describedby="sizing-addon2"  value="{{isset($cobranca->referencia) ? $cobranca->referencia : old('referencia')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Bairro:<font color="red">*</font></span>
-  <input type="text" name="bairro" id="bairro" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{old('bairro')}}">
+  <input type="text" name="bairro" id="bairro" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{isset($cobranca->bairro) ? $cobranca->bairro : old('bairro')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Cidade:<font color="red">*</font></span>
-  <input type="text" name="cidade" id="cidade" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{old('cidade')}}">
+  <input type="text" name="cidade" id="cidade" class="form-control" placeholder="" aria-describedby="sizing-addon2" required  value="{{isset($cobranca->cidade) ? $cobranca->cidade : old('cidade')}}">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">Estado:<font color="red">*</font></span>
   <select name="estado" id="estado" class="form-control" required>
-    <option></option>
+    <option>{{isset($cobranca->estado) ? $cobranca->estado : old('estado')}}</option>
     <option name="AC">Acre</option>
     <option name="AL">Alagoas</option>
     <option name="AP">Amapá</option>
@@ -101,7 +101,11 @@
 
 </p>
 <br>
-<div class="">{{Form::submit('Cadastrar',['class'=>'btn btn-success'])}}</div>
+@if(count($cobranca)> 0)
+  <div class="">{{Form::submit('Atualizar',['class'=>'btn btn-success'])}}</div>
+@else
+  <div class="">{{Form::submit('Cadastrar',['class'=>'btn btn-success'])}}</div>
+@endif
 {{Form::close()}}
 
 @endsection
