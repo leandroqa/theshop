@@ -47,6 +47,9 @@ Route::get('/pedidos/','pedidosController@getPedidos')->middleware('auth');
 
 Route::post('/pedidos/finalizar','pedidosController@finalizarPedido')->name('finalizarPedido')->middleware('auth');
 
+Route::get('/pedidos/{ped}','pedidosController@getPedidosInfo')->middleware('auth');
+
+
 Route::get('/cobranca','cobrancasController@index')->middleware('auth')->name('finalizarCompra');
 
 Route::post('/cobranca/gravar','cobrancasController@gravar')->middleware('auth')->name('gravarEndereco');
