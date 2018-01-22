@@ -42,3 +42,9 @@ Criar o banco de dados inicial rodando o comando:
 php artisan migrate
 
 php artisan db:seed
+
+Rodar o sistema:
+
+php artisan serve
+
+Acessar o endereço http://localhost:8000
