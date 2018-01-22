@@ -15,9 +15,7 @@
     <th>Subtotal (R$)</th>
     <th></th>
   </tr>
-  <?php $i =0; $total = 0;
-  //print_r($carrinho);
-   ?>
+  <?php $i =0; $total = 0;  ?>
 
   @foreach ($carrinho as $key => $cart)
     <tr>

@@ -43,7 +43,7 @@ Route::get('/carrinho/atualizar','carrinhoController@atualizarCarrinho')->name('
 
 Route::post('/buscar','produtosController@buscarProdutos')->name('buscarProdutos');
 
-Route::get('/pedidos/','pedidosController@index')->middleware('auth');
+Route::get('/pedidos/','pedidosController@getPedidos')->middleware('auth');
 
 Route::post('/pedidos/finalizar','pedidosController@finalizarPedido')->name('finalizarPedido')->middleware('auth');
 

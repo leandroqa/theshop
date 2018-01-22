@@ -55,6 +55,13 @@ class pedidosController extends Controller
     public function getPedidos()
     {
       //lista de pedidos por usuário
+      $pedidos = DB::table('produtosxpedidos')
+            ->join('pedidos', 'produtosxpedidos.pedidos_id', '=', 'pedidos.id')
+            ->join('produtos', 'produtos.id', '=', 'produtosxpedidos.produtos_id')
+            ->select('pedidos.id','pedidos.created_at','produtos.nome', 'produtos.caracteristicas','produtosxpedidos.qtde','produtosxpedidos.valorUnitario','pedidos.total','pedidos.email')
+            ->where('pedidos.email', '=', Auth::user()->email)
+            ->get();
+      return view('pedidos')->with(['pedidos'=> $pedidos]);
     }
 
 
