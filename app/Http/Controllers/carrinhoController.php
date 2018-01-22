@@ -45,18 +45,6 @@ class carrinhoController extends Controller
       return redirect()->route('showCarrinho');
     }
 
-    public function finalizarCompra(Request $request)
-    {
-      //cadastra a compra na tabela pedido
-      //$total = $request->input('valorTotal');
-      $carrinho = $this->getCarrinho();
-      return $carrinho;
-      /*$request->session()->forget('carrinho');
-      $request->session()->flush();
-      return "finished";*/
-      //return redirect()->route('showCarrinho');
-    }
-
     public function atualizarCarrinho(Request $request)
     {
       //Atualiza qtde de itens e total unitário

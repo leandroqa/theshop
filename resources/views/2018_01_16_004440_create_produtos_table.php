@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePedidosTable extends Migration
+class CreateProdutosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('produtos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email',255);
-            $table->foreign('email')
-                          ->references('email')
-                          ->on('users')
-                          ->onDelete('cascade');
-            $table->float('total', 8, 2);
+            $table->string('nome',255);
+            $table->text('caracteristicas')->nullable();
+            $table->integer('qtde')->default(0);
+            $table->float('preco', 8, 2);
+            $table->string('fotoDestacada',255)->nullable()->default('nopic.jpg');
+            $table->char('status', 1)->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +33,6 @@ class CreatePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('produtos');
     }
 }

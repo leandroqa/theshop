@@ -20,12 +20,13 @@ class CreateProdutosxpedidosTable extends Migration
                         ->references('id')
                         ->on('produtos')
                         ->onDelete('cascade');
-          $table->integer('pedidos_id')->unsigned();
-          $table->foreign('pedidos_id')
-                        ->references('id')
-                        ->on('pedidos')
-                        ->onDelete('cascade');
+          $table->string('email',255);
+          $table->foreign('email')
+                        ->references('email')
+                        ->on('users')
+                        ->onUpdate('cascade');
           $table->integer('qtde')->default(0);
+          $table->float('valorUnitario', 8, 2);
           $table->timestamps();
           $table->softDeletes();
         });

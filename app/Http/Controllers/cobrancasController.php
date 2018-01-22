@@ -49,9 +49,9 @@ class cobrancasController extends Controller
       $cobranca->bairro = $request->input('bairro');
       $cobranca->cidade = $request->input('cidade');
       $cobranca->estado = $request->input('estado');
-      $cobranca->save();
-
-      return "Gravado";
+      $id = $cobranca->save();
+      
+      return view('finalizarPedido')->with(['carrinho'=> session('carrinho')]);
 
     }
 
