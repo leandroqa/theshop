@@ -1,4 +1,6 @@
 # TheShop
+<small>By Leandro A. Roberto</small>
+
 MVP de E-comerce composto pelos seguintes módulos:
   - Categorias de produtos
   - Produtos
