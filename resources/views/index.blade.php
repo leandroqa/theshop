@@ -36,18 +36,6 @@
 @endsection
 
 @section('categoriaszone')
-<h2>Categorias</h2>
-
-@foreach($categorias as $categoria)
-  @component('components.menu')
-    @slot('categoria')
-        {{$categoria->nome}}
-    @endslot
-    @slot('url')
-      /{{$categoria->slug}}
-    @endslot
-    @slot('active')
-    @endslot
-  @endcomponent
-@endforeach
+  <h2>Categorias</h2>
+  @include('menuCategorias', ['categorias' => $categorias, 'cat' => null])
 @endsection
